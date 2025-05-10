@@ -4,7 +4,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes, Messa
 from telegram import ReplyKeyboardMarkup
 
 def search_youtube(query: str):
-    with yt_dlp.YoutubeDL({'quiet': True}) as ydl:
+    with yt_dlp.YoutubeDL({'quiet': True, "cookies": "cookies.txt"}) as ydl:
         results = ydl.extract_info(f"ytsearch1:{query}", download=False)
         video = results['entries'][0]
         return {
