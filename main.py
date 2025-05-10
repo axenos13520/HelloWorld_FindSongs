@@ -44,6 +44,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         if searchingForSong:
             await update.message.reply_text("🎵 " + song["title"] + "\n🔗 " + song["url"])
+    elif text == "Закрыть":
+        exit() 
     else:
         await update.message.reply_text("Для начала поиска выберите команду поиска")
 
@@ -63,3 +65,5 @@ if __name__ == '__main__':
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
 
     app.run_polling()
+
+    print("closing...")
